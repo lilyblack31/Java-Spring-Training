@@ -1,3 +1,4 @@
 .jar
 *.jar
 SpringMVCHibernate/target/SpringMVCHibernate.war
+SpringMVCHibernate/.DS_Store
