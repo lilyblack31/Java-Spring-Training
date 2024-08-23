@@ -2,3 +2,8 @@
 *.jar
 SpringMVCHibernate/target/SpringMVCHibernate.war
 SpringMVCHibernate/.DS_Store
+*.prefs
+*.component
+/SpringMVCHibernate/.settings
+SpringMVCHibernate/.project
+SpringMVCHibernate/.classpath
