@@ -2,6 +2,7 @@ package com.example.springrest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,24 @@ public class ProductService implements IProductService {
 		products.add(new Product(105, "Refrigerator ", "12WP9087", 10000.00, 4));
 		
 		return products;
+	}
+
+	@Override
+	public Product save(Product newProduct) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<Product> findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteById(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
