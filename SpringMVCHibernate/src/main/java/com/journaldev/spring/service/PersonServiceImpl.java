@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.journaldev.spring.dao.PersonDAO;
 import com.journaldev.spring.model.Person;
+import com.journaldev.spring.model.Staff;
 import com.journaldev.spring.model.StaffHasPerson;
 
 @Service

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.journaldev.spring.model.Person;
+import com.journaldev.spring.model.Staff;
 import com.journaldev.spring.model.StaffHasPerson;
 import com.journaldev.spring.service.PersonService;
 

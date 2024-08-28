@@ -118,7 +118,9 @@
 			</tr>
 		</table>
 	</form:form>
+
 	<br>
+<%-- 	<a href="<c:url value='/staff' />">To Staff List</a> --%>
 	<h3>Persons List</h3>
 	<c:if test="${!empty listPersons}">
 		<div class="person-list">
@@ -142,6 +144,9 @@
 					<div class="person-delete">
 						<a href="<c:url value='/remove/${person.id}' />">Delete</a>
 					</div>
+					<div class="person-view-staff">
+        				<a href="<c:url value='/person/${person.id}/staff' />">View Staff</a>
+    				</div>
 				</div>
 			</c:forEach>
 		</div>

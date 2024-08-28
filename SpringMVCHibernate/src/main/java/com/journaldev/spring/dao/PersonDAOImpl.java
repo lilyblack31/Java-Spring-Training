@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.journaldev.spring.model.Person;
+import com.journaldev.spring.model.Staff;
 import com.journaldev.spring.model.StaffHasPerson;
 
 @Repository
@@ -79,4 +80,5 @@ public class PersonDAOImpl implements PersonDAO {
         }
         return staffHasPersons;
     }
+	
 }
