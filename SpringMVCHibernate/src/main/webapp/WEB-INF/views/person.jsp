@@ -74,8 +74,12 @@
 	
 	<p id="time"></p>
 	<script>
-		var date = new Date();
-		document.getElementById("time").innerHTML = date;
+		function updateTime() {
+			var date = new Date();
+			document.getElementById("time").innerHTML = date;
+		}
+		setInterval(updateTime, 1000);
+		updateTime();
 	</script>
 
 	<c:url var="addAction" value="/person/add"></c:url>
