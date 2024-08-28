@@ -1,10 +1,12 @@
 package com.journaldev.spring.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,8 +34,11 @@ public class Person {
 	
 	private int age;
 	
-	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    private Set<StaffHasPerson> staffHasPersons;
+	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<StaffHasPerson> staffList;
+	
+	//@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    //private Set<StaffHasPerson> staffHasPersons;
 
 	public int getId() {
 		return id;
@@ -67,13 +72,21 @@ public class Person {
 		this.age = age;
 	}
 
-	public Set<StaffHasPerson> getStaffHasPersons() {
+	public List<StaffHasPerson> getStaffList() {
+		return staffList;
+	}
+
+	public void setStaffList(List<StaffHasPerson> staffList) {
+		this.staffList = staffList;
+	}
+
+	/*public Set<StaffHasPerson> getStaffHasPersons() {
 		return staffHasPersons;
 	}
 
 	public void setStaffHasPersons(Set<StaffHasPerson> staffHasPersons) {
 		this.staffHasPersons = staffHasPersons;
-	}
+	} */
 
 	@Override
 	public String toString(){

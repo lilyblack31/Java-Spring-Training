@@ -29,6 +29,11 @@ public class PersonController {
 	
 	@RequestMapping(value = "/persons", method = RequestMethod.GET)
 	public String listPersons(Model model) {
+		List<Person> manyperson = this.personService.listPersons();
+        for (Person person : manyperson) {
+            List<StaffHasPerson> staffList = this.personService.getStaffByPersonId(person.getId());
+            person.setStaffList(staffList); 
+        }
 		model.addAttribute("person", new Person());
 		model.addAttribute("listPersons", this.personService.listPersons());
 		return "person";
@@ -64,12 +69,14 @@ public class PersonController {
         return "person";
     }
     
-    @RequestMapping("/person/{id}/staff")
-    public String viewStaffForPerson(@PathVariable("id") int id, Model model){
-        List<StaffHasPerson> staffList = this.personService.getStaffByPersonId(id);
-        model.addAttribute("person", this.personService.getPersonById(id));
-        model.addAttribute("staffList", staffList);
-        return "staffperson"; // This will be the new JSP page for displaying staff members
-    }
+    
+	/*
+	 * @RequestMapping("/person/{id}/staff") public String
+	 * viewStaffForPerson(@PathVariable("id") int id, Model model){
+	 * List<StaffHasPerson> staffList = this.personService.getStaffByPersonId(id);
+	 * model.addAttribute("person", this.personService.getPersonById(id));
+	 * model.addAttribute("staffList", staffList); return "staffperson"; // This
+	 * will be the new JSP page for displaying staff members }
+	 */
 	
 }

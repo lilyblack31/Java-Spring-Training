@@ -133,15 +133,55 @@
 				<div class="person-name">Person Name</div>
 				<div class="person-country">Person Country</div>
 				<div class="person-age">Person Age</div>
+				<div class="staff-id">Staff ID</div>
+				<div class="staff-name">Staff Name</div>
 				<div class="person-edit">Edit</div>
 				<div class="person-delete">Delete</div>
 			</div>
 			<c:forEach items="${listPersons}" var="person">
-				<div class="person-row">
+				<c:forEach items="${person.staffList}" var="staffHasPerson" varStatus="status">
+					<div class="person-row">
+						<c:if test="${status.first}">
+							<div class="person-id">${person.id}</div>
+							<div class="person-name">${person.name}</div>
+							<div class="person-country">${person.country}</div>
+							<div class="person-age">${person.age}</div>
+						</c:if>
+						<div class="staff-id">${staffHasPerson.staff.staff_id}</div>
+						<div class="staff-name">${staffHasPerson.staff.staff_name}</div>
+						<c:if test="${status.first}">
+							<div class="person-edit">
+								<a href="<c:url value='/edit/${person.id}' />">Edit</a>
+							</div>
+							<div class="person-delete">
+								<a href="<c:url value='/remove/${person.id}' />">Delete</a>
+							</div>
+						</c:if>
+					</div>
+				</c:forEach>
+				<c:if test="${empty person.staffList}">
+					<div class="person-row">
+						<div class="person-id">${person.id}</div>
+						<div class="person-name">${person.name}</div>
+						<div class="person-country">${person.country}</div>
+						<div class="person-age">${person.age}</div>
+						<div class="staff-id">N/A</div>
+						<div class="staff-name">No Staff</div>
+						<div class="person-edit">
+							<a href="<c:url value='/edit/${person.id}' />">Edit</a>
+						</div>
+						<div class="person-delete">
+							<a href="<c:url value='/remove/${person.id}' />">Delete</a>
+						</div>
+					</div>
+				</c:if>
+			
+				<%-- <div class="person-row">
 					<div class="person-id">${person.id}</div>
 					<div class="person-name">${person.name}</div>
 					<div class="person-country">${person.country}</div>
 					<div class="person-age">${person.age}</div>
+					
 					<div class="person-edit">
 						<a href="<c:url value='/edit/${person.id}' />">Edit</a>
 					</div>
@@ -151,7 +191,7 @@
 					<div class="person-view-staff">
         				<a href="<c:url value='/person/${person.id}/staff' />">View Staff</a>
     				</div>
-				</div>
+				</div> --%>
 			</c:forEach>
 		</div>
 	</c:if>

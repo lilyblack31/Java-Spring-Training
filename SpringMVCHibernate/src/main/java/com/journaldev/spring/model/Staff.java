@@ -1,10 +1,12 @@
 package com.journaldev.spring.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,8 +30,11 @@ public class Staff {
 	
 	private String staff_name;
 	
-	@OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
-	private Set<StaffHasPerson> staffHasPersons;
+	@OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<StaffHasPerson> personList;
+	
+	//@OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+	//private Set<StaffHasPerson> staffHasPersons;
 
 	public int getStaff_id() {
 		return staff_id;
@@ -47,12 +52,26 @@ public class Staff {
 		this.staff_name = staff_name;
 	}
 	
-	public Set<StaffHasPerson> getStaffHasPersons() {
+	/*public Set<StaffHasPerson> getStaffHasPersons() {
 		return staffHasPersons;
 	}
 
 	public void setStaffHasPersons(Set<StaffHasPerson> staffHasPersons) {
 		this.staffHasPersons = staffHasPersons;
+	} */
+
+	/**
+	 * @return the personList
+	 */
+	public List<StaffHasPerson> getPersonList() {
+		return personList;
+	}
+
+	/**
+	 * @param personList the personList to set
+	 */
+	public void setPersonList(List<StaffHasPerson> personList) {
+		this.personList = personList;
 	}
 
 	@Override
