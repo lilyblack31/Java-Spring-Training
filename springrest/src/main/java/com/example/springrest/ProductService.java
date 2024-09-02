@@ -8,13 +8,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductService implements IProductService {
-
-	@Override
-	public List<Product> findAll() {
-		// TODO Auto-generated method stub
-		
-		ArrayList<Product> products = new ArrayList<Product>();
-		
+	
+	private ArrayList<Product> products = new ArrayList<Product>();
+	
+	public ProductService() {
 		// Add products to the list - enter values
 		products.add(new Product(100, "Mobile", "CLK98123", 9000.00, 6));  
 		products.add(new Product(101, "Smart TV", "LGST09167", 60000.00, 3));  
@@ -23,25 +20,33 @@ public class ProductService implements IProductService {
 		products.add(new Product(104, "Air Conditioner", "ACLG66721", 30000.00, 5));  
 		products.add(new Product(105, "Refrigerator ", "12WP9087", 10000.00, 4));
 		
+	}
+
+	@Override
+	public List<Product> findAll() {
+		// TODO Auto-generated method stub
 		return products;
 	}
 
 	@Override
 	public Product save(Product newProduct) {
 		// TODO Auto-generated method stub
-		return null;
+		products.add(newProduct);
+        return newProduct;
 	}
 
 	@Override
 	public Optional<Product> findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return products.stream()
+                .filter(product -> product.getId() == id)
+                .findFirst();
 	}
 
 	@Override
 	public void deleteById(int id) {
 		// TODO Auto-generated method stub
-		
+		products.removeIf(product -> product.getId() == id);
 	}
 
 }
